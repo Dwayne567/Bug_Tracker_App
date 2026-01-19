@@ -62,8 +62,8 @@ export default function BugForm({ initialData, onSubmit, isSubmitting, onCancel 
     const tags = data.tags
       ? data.tags
           .split(',')
-          .map((tag) => tag.trim().toLowerCase())
-          .filter((tag) => tag.length > 0)
+          .map((tag: string) => tag.trim().toLowerCase())
+          .filter((tag: string) => tag.length > 0)
       : [];
 
     await onSubmit({

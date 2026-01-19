@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import BugCard from '@/components/BugCard';
 import { BugReport } from '@/lib/types';
 

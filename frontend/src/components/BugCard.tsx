@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import { BugReport, SEVERITY_OPTIONS, STATUS_OPTIONS } from '@/lib/types';
 
@@ -61,7 +62,7 @@ export default function BugCard({ bug, onDelete }: BugCardProps) {
             View
           </Link>
           <button
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent) => {
               e.preventDefault();
               onDelete(bug.id);
             }}
