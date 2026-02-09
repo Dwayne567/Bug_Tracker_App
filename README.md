@@ -16,7 +16,7 @@ A production-ready full-stack Bug Tracker CRUD application with Django REST Fram
 - 🔍 **Search & Filter** - Filter by severity, status, and search by text
 - 📱 **Responsive UI** - Mobile-friendly Tailwind CSS design
 - 🐳 **Docker Ready** - One-command setup with Docker Compose
-- ✅ **Tested** - Backend (pytest) and Frontend (Jest, Playwright) tests
+- ✅ **Tested** - Backend (pytest) and Frontend (Jest, Cypress) tests
 
 ## Tech Stack
 
@@ -26,7 +26,7 @@ A production-ready full-stack Bug Tracker CRUD application with Django REST Fram
 - **Frontend**: Next.js 14 (App Router), React 18, TypeScript
 - **Styling**: Tailwind CSS
 - **Forms**: React Hook Form + Zod validation
-- **Testing**: pytest, Jest, Playwright
+- **Testing**: pytest, Jest, Cypress
 - **DevOps**: Docker, Docker Compose
 
 ## Project Structure
@@ -42,7 +42,7 @@ A production-ready full-stack Bug Tracker CRUD application with Django REST Fram
 │   │   ├── app/           # App Router pages
 │   │   ├── components/    # React components
 │   │   └── lib/           # API client, utilities
-│   └── tests/             # Jest + Playwright tests
+│   └── cypress/           # Cypress E2E tests
 ├── docker-compose.yml
 └── README.md
 ```
@@ -89,12 +89,22 @@ docker compose exec backend python manage.py createsuperuser
 | **API Documentation** | http://localhost:8000/api/docs/ |
 | **Django Admin** | http://localhost:8000/admin/ |
 
-### 4. Using the App
+### 4. Default Login
+
+A default admin user is created with the migrations. You can log in immediately:
+
+| Field | Value |
+|-------|-------|
+| **Username** | `admin` |
+| **Password** | `Admin123!` |
+
+Or click **Register** at http://localhost:3000 to create a new account.
+
+### 5. Using the App
 
 1. Open http://localhost:3000
-2. Click **Register** to create a new account
-3. Log in with your credentials
-4. Start creating and managing bug reports!
+2. Sign in with the default credentials above, or register a new account
+3. Start creating and managing bug reports!
 
 ## Development
 
@@ -110,10 +120,14 @@ docker compose exec backend pytest -v
 docker compose exec frontend npm test
 ```
 
-#### Frontend E2E Tests
+#### Frontend E2E Tests (Cypress)
 ```bash
-# Make sure the app is running
-docker compose exec frontend npm run test:e2e
+# Headless run (make sure the app is running)
+cd frontend
+npm run test:e2e
+
+# Interactive Cypress Test Runner
+npm run test:e2e:open
 ```
 
 ### Local Development (without Docker)
@@ -187,6 +201,18 @@ Key variables:
 - `DEBUG` - Set to `False` in production
 - `POSTGRES_*` - Database connection settings
 - `NEXT_PUBLIC_API_URL` - Backend API URL for frontend
+
+## Database Access (DBeaver / pgAdmin)
+
+Connect to the PostgreSQL database with any SQL client:
+
+| Field | Value |
+|-------|-------|
+| **Host** | `localhost` |
+| **Port** | `5432` |
+| **Database** | `bugtracker` |
+| **Username** | `bugtracker` |
+| **Password** | `bugtracker_password` |
 
 ## Troubleshooting
 

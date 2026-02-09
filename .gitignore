@@ -58,8 +58,9 @@ Thumbs.db
 htmlcov/
 .pytest_cache/
 coverage/
-playwright-report/
-test-results/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
 
 # Docker
 .docker/
